@@ -111,15 +111,12 @@ public class BahanServiceImpl implements BahanService {
       response.setData(bahan);
     } else {
       if (bahan.isPresent()) {
-        Bahan _bahan = bahan.get();
 
-        _bahan.setIsDeleted(true);
-
-        bahanRepository.save(_bahan);
+        bahanRepository.deleteById(bahan.get().getId());
         
         response.setStatus(HttpStatus.CREATED.value());
         response.setMessage("success deleted");
-        response.setData(_bahan);
+        response.setData(null);
       }
     }
 

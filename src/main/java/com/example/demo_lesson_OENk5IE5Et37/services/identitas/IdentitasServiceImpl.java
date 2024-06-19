@@ -112,7 +112,7 @@ public class IdentitasServiceImpl implements IdentitasService {
     } else {
       if (identitas.isPresent()) {
 
-        identitasRepository.deleteById(uuid);
+        identitasRepository.deleteById(identitas.get().getId());
 
         response.setStatus(HttpStatus.CREATED.value());
         response.setMessage("success deleted");
